@@ -38,4 +38,65 @@ if(isset($_POST['register_btn']))
 
 
 
+if(isset($_POST['update_btn']))
+{
+    $id = $_POST['edit_id'];
+    $userName = $_POST['edit_username'];
+    $Email = $_POST['edit_Email'];
+    $password = $_POST['edit_password'];
+
+    $update_query = "UPDATE users SET 	user_name = '$userName', email= '$Email', password= '$password' WHERE user_id = '$id'";
+    $update_query_run =mysqli_query($conn,$update_query);
+
+    if($update_query_run)
+    {
+        $_SESSION['success'] = "your data is updated";
+        header('location:register.php');
+        exit();
+    }
+    else
+    {
+        $_SESSION['status'] = "your data is not updated";
+        header('location:register.php');
+        exit();
+    }
+}
+
+if(isset($_POST['del_btn']))
+{
+    $id = $_POST['del_id'];
+
+    $del_query= "DELETE FROM users  WHERE user_id = '$id'";
+    $del_query_run =mysqli_query($conn,$del_query);
+
+    if($del_query_run)
+    {
+        $_SESSION['success'] = "your data it was daleted";
+        header('location:register.php');
+        exit();
+    }
+    else
+    {
+        $_SESSION['status'] = "your data it wasn't daleted";
+        header('location:register.php');
+        exit();
+    }
+}
+
+
+
+
+// login code 
+
+if(isset($_POST['login_btn']))
+{
+    $email_login = $_POST['email'];
+    $password_login = $_POST['password'];
+
+    $login_query = "SELECT * FROM users WHERE email = '$email_login' AND password = '$password_login' LIMIT 1";
+    $login_query_run = mysqli_query($conn,$login_query);
+
+    
+}
+
 ?>

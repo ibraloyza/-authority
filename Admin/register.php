@@ -1,8 +1,8 @@
 <?php 
 session_start();
-include('../dbcon.php');
 include('includes/header.php');
 include('includes/navbar.php');
+include('../dbcon.php');
 
 ?>
 
@@ -10,12 +10,17 @@ include('includes/navbar.php');
 <!-- Modal -->
 <div class="modal fade" id="addAdminProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
+
     <div class="modal-content">
+       
       <div class="modal-header">
+
       <h5 class="modal-title" id="exampleModalLabel">Add Students</h5>
+ 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+
       </div>
 
       <form action="code.php" method="POST">
@@ -61,19 +66,23 @@ include('includes/navbar.php');
         <h6 class="m-0 font-weight-bold text-primary">Admin profile
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAdminProfile">
             Add Admin Profile
-        </button>                
+        </button>    
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class=" btn btn-warning" href="recycle_bin.php">Recycle Bin</a>
+        </ul>             
         </h6>
     </div>
     <div class="card-body">
         <?php
          if (isset($_SESSION['success'])&& $_SESSION['success'] != '') 
          {
-            echo '<h2>'.$_SESSION['success'].'</h2>';
+            echo '<h2 class="text-primary"> '.$_SESSION['success'].'</h2>';
             unset($_SESSION['success']);
          }
          if (isset($_SESSION['status'])&& $_SESSION['status'] != '') 
          {
-            echo '<h2 class="bg-info"> '.$_SESSION['status'].'</h2>';
+            echo '<h2 class="text-danger"> '.$_SESSION['status'].'</h2>';
             unset($_SESSION['status']);
          }
         ?>
@@ -106,8 +115,18 @@ include('includes/navbar.php');
                         <td><?php echo $row['user_id'];?></td>
                         <td><?php echo $row['user_name'];?></td>
                         <td><?php echo $row['email'];?></td>
-                        <td><a href="update_page1.php?id=<?php echo $row['user_id'];?>" class="btn btn-success">Update</a></td>
-                        <td><a href="delete_page.php?id=<?php echo $row['user_id'];?>" class="btn btn-danger">Delete</a></td>
+                        <td>
+                            <form action="update_page.php" method="POST">
+                                <input type="hidden" name="edit_id"  value="<?php echo $row['user_id'];?>">
+                                <button type="submit" name="edit_btn" class="btn btn-success">Edit </button>
+                            </form>
+                        </td>
+                        <td>
+                        <form action="code.php" method="POST">
+                                <input type="hidden" name="del_id"  value="<?php echo $row['user_id'];?>">
+                                <button type="submit" name="del_btn" class="btn btn-danger" onclick="return confirm('Are you sure you want to temporarily delete this student?');">delete </button>
+                            </form>
+                        </td>
 
                     </tr>
                 <?php
@@ -125,7 +144,6 @@ include('includes/navbar.php');
         </div>
     </div>
 </div>
-
 
 
 
