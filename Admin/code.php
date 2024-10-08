@@ -46,8 +46,9 @@ if(isset($_POST['update_btn']))
     $userName = $_POST['edit_username'];
     $Email = $_POST['edit_Email'];
     $password = $_POST['edit_password'];
+    $edit_userType = $_POST['Update_usertype'];
 
-    $update_query = "UPDATE users SET 	user_name = '$userName', email= '$Email', password= '$password' WHERE user_id = '$id'";
+    $update_query = "UPDATE users SET 	user_name = '$userName', email= '$Email', password= '$password' , usertype = '$edit_userType' WHERE user_id = '$id'";
     $update_query_run =mysqli_query($conn,$update_query);
 
     if($update_query_run)

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include('includes/header.php');
 include('includes/navbar.php');
 include('../dbcon.php');
@@ -38,6 +39,13 @@ include('../dbcon.php');
                 <div class="form-group">
                     <label for="pass">password</label>
                     <input type="password" value= "<?php echo $row['password'];?>" name="edit_password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">UserType</label>
+                    <select name="Update_usertype" class="form-control">
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
                 </div>
 
                 <div class="modal-footer">
