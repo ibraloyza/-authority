@@ -8,7 +8,9 @@
     <title>Document</title>
     
 <?php 
-include ('dbcon.php');
+// include ('dbcon.php');
+include('./Admin/security.php');
+
 ?>
 </head>
 

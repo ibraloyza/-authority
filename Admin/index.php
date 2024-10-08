@@ -1,5 +1,6 @@
 <?php
 include('security.php');
+
 include('includes/header.php'); 
 include('includes/navbar.php'); 
 ?>
@@ -24,16 +25,21 @@ include('includes/navbar.php');
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered Admin</div>
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered users</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
 
               <h4>
-                <?php 
-                $query = "SELECT user_id FROM users ORDER BY user_id";
-                $query_run = mysqli_query($conn, $query);
 
-                $row = mysqli_num_rows($query_run);
-                echo '<h1?> totle admin:' . $row. '</h1?';  
+                <?php 
+                      $userType = $_SESSION['usertype'];
+                   
+                      $query = "SELECT user_id FROM users WHERE usertype = '$userType' ORDER BY user_id";
+                      $query_run = mysqli_query($conn, $query);
+
+                      $row = mysqli_num_rows($query_run);
+                      echo '<h1?> totle Users:' . $row. '</h1?';  
+                    
+ 
 
                 ?>                                                    
               </h4>

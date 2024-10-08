@@ -1,5 +1,5 @@
-
  <!-- Sidebar -->
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
@@ -45,14 +45,18 @@
 
 
 
-
+<?php
+if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
+{
+  ?>
 <li class="nav-item">
   <a class="nav-link" href="register.php">
     <i class="fas fa-fw fa-chart-area"></i>
     <span>Admin Profile</span></a>
 </li>
-
-
+  <?php
+}
+?>
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
@@ -89,7 +93,7 @@
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Login Screens:</h6>
       <a class="collapse-item" href="login.html">Login</a>
-      <a class="collapse-item" href="register.html">Register</a>
+      <a class="collapse-item" href="register.php">Register</a>
       <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
       <div class="collapse-divider"></div>
       <h6 class="collapse-header">Other Pages:</h6>
