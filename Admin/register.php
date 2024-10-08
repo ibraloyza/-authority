@@ -46,6 +46,7 @@ include('../dbcon.php');
                 <label for="pass">confirmPassword</label>
                 <input type="password" name="confirmPassword" class="form-control">
             </div>
+            <input type="hidden" name="usertype" value="Admin">
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -97,6 +98,7 @@ include('../dbcon.php');
                 <th>id</th>
                 <th>userName</th>
                 <th>Email</th>
+                <th>UserType</th>
                 <th>Update</th>
                 <th>Delete</th>
                 </tr>
@@ -115,6 +117,7 @@ include('../dbcon.php');
                         <td><?php echo $row['user_id'];?></td>
                         <td><?php echo $row['user_name'];?></td>
                         <td><?php echo $row['email'];?></td>
+                        <td><?php echo $row['usertype'];?></td>
                         <td>
                             <form action="update_page.php" method="POST">
                                 <input type="hidden" name="edit_id"  value="<?php echo $row['user_id'];?>">

@@ -1,6 +1,6 @@
 <?php
 // session_start();
-include("../dbcon.php");
+include("security.php");
 if(isset($_POST['register_btn']))
 {
     $id = $_POST['id'];
@@ -8,11 +8,12 @@ if(isset($_POST['register_btn']))
     $Email= $_POST['email'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
+    $usertype = $_POST['usertype'];
 
     if($password === $confirmPassword)
     {
-        $query = "INSERT INTO users(user_id,user_name,email,password) 
-            VALUES('$id','$userName','$Email','$password')";
+        $query = "INSERT INTO users(user_id, user_name, email, password, usertype) 
+            VALUES('$id','$userName','$Email','$password','$usertype')";
         $query_run = mysqli_query($conn, $query);
         
         if($query_run)
