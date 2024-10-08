@@ -1,6 +1,6 @@
 <?php
-session_start();
-include('../dbcon.php');
+// session_start();
+include("../dbcon.php");
 if(isset($_POST['register_btn']))
 {
     $id = $_POST['id'];
@@ -37,6 +37,7 @@ if(isset($_POST['register_btn']))
 }
 
 
+// update query
 
 if(isset($_POST['update_btn']))
 {
@@ -62,6 +63,8 @@ if(isset($_POST['update_btn']))
     }
 }
 
+
+// delete query 
 if(isset($_POST['del_btn']))
 {
     $id = $_POST['del_id'];
@@ -86,17 +89,6 @@ if(isset($_POST['del_btn']))
 
 
 
-// login code 
 
-if(isset($_POST['login_btn']))
-{
-    $email_login = $_POST['email'];
-    $password_login = $_POST['password'];
-
-    $login_query = "SELECT * FROM users WHERE email = '$email_login' AND password = '$password_login' LIMIT 1";
-    $login_query_run = mysqli_query($conn,$login_query);
-
-    
-}
 
 ?>

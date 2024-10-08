@@ -1,5 +1,6 @@
 <?php 
-include('../dbcon.php');
+session_start();
+
 include('includes/header.php');
 ?>
 
@@ -20,8 +21,16 @@ include('includes/header.php');
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                <?php
+
+                                if(isset($_SESSION['status']) && $_SESSION['status'] !='') 
+                                {
+                                    echo '<h2 class="bg-danger text-white"> '.$_SESSION['status'].' </h2>';
+                                    unset($_SESSION['status']);
+                                }
+                                ?>
                             </div>
-                            <form class="user" action="code.php" method="POST">
+                            <form class="user" action="logincode.php" method="POST">
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control form-control-user" placeholder="Enter Email Address...">
                                 </div>

@@ -4,7 +4,7 @@ include('../dbcon.php');
 
 if($conn)
 {
-    // echo "database connected"
+    // echo "database connected";
 }
 else
 {
