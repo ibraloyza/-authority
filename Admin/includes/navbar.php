@@ -1,9 +1,11 @@
  <!-- Sidebar -->
-
+<?php 
+// session_start();
+?>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-laugh-wink"></i>
   </div>
@@ -13,12 +15,19 @@
 <!-- Divider -->
 <hr class="sidebar-divider my-0">
 
+<?php
+if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
+{
+  ?>
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
   <a class="nav-link" href="index.php">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Dashboard</span></a>
 </li>
+<?php
+}
+?>
 
 <!-- Divider -->
 <hr class="sidebar-divider">
@@ -44,17 +53,54 @@
 </li>
 
 
+<?php
+if(isset($_SESSION['usertype'] ) && ($_SESSION['usertype'] =='Admin')|| ($_SESSION['usertype'] =='Teacher') )
+{
+  ?>
+
+
+  <li class="nav-item">
+  <a class="nav-link" href="../course.php">
+    <i class="fas fa-fw fa-chart-area"></i>
+    <span>Courses</span></a>
+</li>
+
+
 
 <?php
-if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
+}
+?>
+<?php
+if(isset($_SESSION['usertype']) && ($_SESSION['usertype'] =='Teacher')|| ($_SESSION['usertype'] =='Admin'))
 {
+  ?>
+<li class="nav-item">
+  <a class="nav-link" href="../Veiw_courses.php">
+    <i class="fas fa-fw fa-chart-area"></i>
+    <span>Courses</span></a>
+</li>
+<?php
+}
+    ?>
+
+
+<?php 
+if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin'){
   ?>
 <li class="nav-item">
   <a class="nav-link" href="register.php">
     <i class="fas fa-fw fa-chart-area"></i>
     <span>Admin Profile</span></a>
 </li>
-  <?php
+ <?php
+
+}
+?>
+
+<?php
+if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
+{
+
 }
 ?>
 

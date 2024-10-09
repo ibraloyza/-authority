@@ -1,27 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+0a5d9l9E4JN5FZl5Oj5BHT/A/ZLgLtFQcT6C/l" crossorigin="anonymous">
-
-    <title>Document</title>
-    
 <?php 
-// include ('dbcon.php');
-include('./Admin/security.php');
-
+$page_title = "Home Page"; 
+include('includes/header.php'); 
+include('includes/navbar.php');
 ?>
-</head>
 
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>Welcome to the WEB OF IT</h2>
+        
+        <button
+          class="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group"
+        >
+          <span
+            class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4"
+          >
+            <span
+              class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"
+            ></span>
+          </span>
+          <span
+            class="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-ml-4 group-hover:-mb-4"
+          >
+            <span
+              class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"
+            ></span>
+          </span>
+          <span
+            class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0"
+          ></span>
+          <span
+            class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white"
+            >Get Started</span
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<body>
-
-    <h1>hello world </h1>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyqE3yoZpobETLDlOHKLGySKHwGHFQ6CZY9uAm2++b1PLj4" crossorigin="anonymous"></script>
-
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>
