@@ -34,7 +34,7 @@ include('includes/navbar.php');
 
                       $userType = $_SESSION['usertype'];
                    
-                      $query = "SELECT student_id FROM students WHERE role_id = '$userType' ORDER BY student_id";
+                      $query = "SELECT student_id FROM students WHERE role_id = '$userType' ORDER BY role_id";
                       $query_run = mysqli_query($conn, $query);
 
                       $row = mysqli_num_rows($query_run);

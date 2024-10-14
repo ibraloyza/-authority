@@ -38,7 +38,7 @@ if (isset($_GET['token'])) {
                 $_SESSION['status'] = "Your Account has been verified Successfully.!"; 
                 
                 // Redirect to the login page
-                header("Location: ../Admin/login.php"); 
+                header("Location: ./Admin/login.php"); 
                 exit(0); 
             } else {
 
@@ -50,7 +50,7 @@ if (isset($_GET['token'])) {
             // Set a session status message indicating the email is already verified
             $_SESSION['status'] = "Email Already Verified. Please Login"; 
             // Redirect to the login page
-            header("Location: login.php");
+            header("Location: ./Admin/login.php");
             exit(0); 
         }
     } else {

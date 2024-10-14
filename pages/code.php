@@ -63,6 +63,7 @@ if (isset($_POST['register_btn'])) {
         exit();
     }
 
+
     $check_email_query = "SELECT email FROM Students WHERE email = '$email'";
     $result_check_email = mysqli_query($conn, $check_email_query);
     if (mysqli_num_rows($result_check_email) > 0) {
@@ -71,6 +72,9 @@ if (isset($_POST['register_btn'])) {
         exit();
     }
 
+    // Hash the password before saving it
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
     // Set `role_id` for 'student' based on roles table
     $role_query = "SELECT id FROM roles WHERE role_name = 'student'";
     $role_result = mysqli_query($conn, $role_query);
@@ -78,7 +82,7 @@ if (isset($_POST['register_btn'])) {
     $role_id = $role['id'];
 
     $query = "INSERT INTO Students(name, phone, email, password, verify_token, role_id) 
-              VALUES ('$name', '$phone_number', '$email', '$password', '$verify_token', '$role_id')";
+              VALUES ('$name', '$phone_number', '$email', '$hashed_password', '$verify_token', '$role_id')";
     $result_query = mysqli_query($conn, $query);
 
     if ($result_query) {

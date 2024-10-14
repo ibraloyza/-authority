@@ -77,7 +77,7 @@ if(isset($_SESSION['usertype']) && ($_SESSION['usertype'] =='Teacher')|| ($_SESS
 <li class="nav-item">
   <a class="nav-link" href="../Veiw_courses.php">
     <i class="fas fa-fw fa-chart-area"></i>
-    <span>Courses</span></a>
+    <span> VeiweCourses</span></a>
 </li>
 <?php
 }
@@ -337,7 +337,7 @@ if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                     
-                    <?php echo $_SESSION['username']?>
+                    <?php echo $_SESSION['usertype']?>
                 
                 </span>
                 <img class="img-profile rounded-circle"
