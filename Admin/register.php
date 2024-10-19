@@ -23,6 +23,11 @@ include('../dbcon.php');
         </button>
 
       </div>
+      <?php 
+        // $id =  $_POST['usertype'];
+        $query= "SELECT *  FROM roles";
+        $query_run = mysqli_query($conn, $query);
+        ?>
 
       <form action="code.php" method="POST">
         <div class="modal-body">
@@ -40,8 +45,8 @@ include('../dbcon.php');
                 <input type="email" name="email" class="form-control">
             </div>
             <div class="form-group">
-                <label for="Email">phone</label>
-                <input type="email" name="phone" class="form-control">
+                <label for="phone">phone</label>
+                <input type="number" name="phone" class="form-control">
             </div>
             <div class="form-group">
                 <label for="pass">password</label>
@@ -51,8 +56,25 @@ include('../dbcon.php');
                 <label for="pass">confirmPassword</label>
                 <input type="password" name="confirmPassword" class="form-control">
             </div>
-            <input type="hidden" name="usertype" value="Admin">
+            <div class="form-group">
+                <select class="form-control" name="role" required>
+                    <?php 
+                        if (mysqli_num_rows($query_run)>0) {
+                            while($row = mysqli_fetch_assoc($query_run))
+                            {
+                                ?>
+                                <option value=""><?php echo $row['role_name'];?></option>
+                                <?php
+                            }
+                        }
+                    ?>
+                </select>
 
+            </div>            
+ 
+             
+
+           
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <input type="submit" class="btn btn-success" name="register_btn" value="ADD">
@@ -71,7 +93,7 @@ include('../dbcon.php');
     <div class="card-header py-4">
         <h6 class="m-0 font-weight-bold text-primary">Admin profile
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAdminProfile">
-            Add Admin Profile
+            Add Admin 
         </button>    
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -94,7 +116,7 @@ include('../dbcon.php');
         ?>
         <div class="table-responsive">
         <?php 
-        $query= "SELECT * FROM students";
+        $query= "SELECT * FROM admin";
         $query_run = mysqli_query($conn, $query);
         ?>
         <table class="table table-hover table-bordered table-striped">
@@ -103,7 +125,7 @@ include('../dbcon.php');
                 <th>id</th>
                 <th>userName</th>
                 <th>Email</th>
-                <th>UserType</th>
+                <th>phone</th>
                 <th>Update</th>
                 <th>Delete</th>
                 </tr>
@@ -119,19 +141,19 @@ include('../dbcon.php');
                         
 
                     <tr>
-                        <td><?php echo $row['student_id'];?></td>
+                        <td><?php echo $row['id'];?></td>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['email'];?></td>
-                        <td><?php echo $row['role_id'];?></td>
+                        <td><?php echo $row['phone'];?></td>
                         <td>
                             <form action="update_page.php" method="POST">
-                                <input type="hidden" name="edit_id"  value="<?php echo $row['student_id'];?>">
+                                <input type="hidden" name="edit_id"  value="<?php echo $row['id'];?>">
                                 <button type="submit" name="edit_btn" class="btn btn-success">Edit </button>
                             </form>
                         </td>
                         <td>
                         <form action="code.php" method="POST">
-                                <input type="hidden" name="del_id"  value="<?php echo $row['student_id'];?>">
+                                <input type="hidden" name="del_id"  value="<?php echo $row['id'];?>">
                                 <button type="submit" name="del_btn" class="btn btn-danger" onclick="return confirm('Are you sure you want to temporarily delete this student?');">delete </button>
                             </form>
                         </td>

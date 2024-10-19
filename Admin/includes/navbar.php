@@ -90,7 +90,19 @@ if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin'){
 <li class="nav-item">
   <a class="nav-link" href="register.php">
     <i class="fas fa-fw fa-chart-area"></i>
-    <span>Admin Profile</span></a>
+    <span> Create Admin</span></a>
+</li>
+ <?php
+
+}
+?>
+<?php 
+if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin'){
+  ?>
+<li class="nav-item">
+  <a class="nav-link" href="register_teacher.php">
+    <i class="fas fa-fw fa-chart-area"></i>
+    <span> Create Teacher</span></a>
 </li>
  <?php
 

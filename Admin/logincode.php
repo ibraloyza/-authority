@@ -5,6 +5,10 @@ include('../dbcon.php');
 if (isset($_POST['login_btn'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']); 
+
+
+
+    
     
     // Query to check the email from the students table and join with the roles table to get the usertype (role_name)
     $login_query = "

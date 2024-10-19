@@ -26,7 +26,7 @@
 
                        <?php if(!isset($_SESSION['authenticated'])) : ?>
                        <li class="nav-item">
-                           <a class="nav-link" href="./pages/register.php">Register</a>
+                           <a class="nav-link" href="./Admin/login.php">login</a>
                        </li>
 
                        <?php endif ?>

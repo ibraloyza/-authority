@@ -19,7 +19,7 @@ include('../dbcon.php');
             {
                 $id = $_POST['edit_id'];
 
-                $query = "SELECT * FROM students WHERE student_id   = '$id'";
+                $query = "SELECT * FROM admin WHERE id   = '$id'";
                 $query_run = mysqli_query($conn, $query);
 
                 foreach($query_run as $row)
@@ -27,7 +27,7 @@ include('../dbcon.php');
             ?>
 
             <form action="code.php" method="POST">
-                <input type="hidden" name="edit_id" value= "<?php echo $row['student_id'];?>">
+                <input type="hidden" name="edit_id" value= "<?php echo $row['id'];?>">
                 <div class="form-group">
                         <label for="username">userName</label>
                         <input type="text" value= "<?php echo $row['name'];?>" name="edit_username" class="form-control">
@@ -40,10 +40,7 @@ include('../dbcon.php');
                     <label for="">Phone Number</label> 
                     <input type="tel" name="Update_phone" value= "<?php echo $row['phone'];?>"  class="form-control" required> 
                 </div>
-                <div class="form-group">
-                    <label for="pass">password</label>
-                    <input type="password" value= "<?php echo $row['password'];?>" name="edit_password" class="form-control">
-                </div>
+
                 <select name="Update_usertype" class="form-control">
                     <?php
                     $role_query = "SELECT * FROM roles";
