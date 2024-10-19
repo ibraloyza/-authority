@@ -43,9 +43,9 @@ if(isset($_POST['register_btn']))
 
     $usertype = $_POST['usertype'];
 
-    $usertypeQuery="INSERT INTO roles (role_name) VALUES ('student')";
+    // $usertypeQuery="INSERT INTO roles (role_name) VALUES ('student')";
 
-    $usertypeQuery_run = mysqli_query($conn,$usertypeQuery);
+    // $usertypeQuery_run = mysqli_query($conn,$usertypeQuery);
 
 
     if (empty($id) || empty($userName) || empty($Email) || empty($phone) || empty($password) || empty($confirmPassword)) {
