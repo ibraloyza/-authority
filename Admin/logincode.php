@@ -10,14 +10,14 @@ if (isset($_POST['login_btn'])) {
 
     
     
-    // Query to check the email from the students table and join with the roles table to get the usertype (role_name)
+    // Query to check the email from the admin table and join with the roles table to get the usertype (role_name)
     $login_query_admin = "
         SELECT admin.*, roles.role_name 
         FROM admin 
         JOIN roles ON admin.role_id = roles.id 
         WHERE admin.email = '$email' 
         LIMIT 1";
-    // Query to check the email from the students table and join with the roles table to get the usertype (role_name)
+    // Query to check the email from the teachers table and join with the roles table to get the usertype (role_name)
     $login_query_teacher = "
         SELECT teachers.*, roles.role_name 
         FROM teachers 
@@ -66,7 +66,7 @@ if (isset($_POST['login_btn'])) {
                     break;
                     
                 default:
-                    // $_SESSION['status'] = "Invalid email / password";
+                    $_SESSION['status'] = "Invalid email / password";
                     header('Location: login.php');
                     break;
             }
@@ -148,7 +148,7 @@ if (isset($_POST['login_btn'])) {
                     break;
                     
                 default:
-                    // $_SESSION['status'] = "Invalid email / password";
+                    $_SESSION['status'] = "Invalid email / password";
                     header('Location: login.php');
                     break;
             }
