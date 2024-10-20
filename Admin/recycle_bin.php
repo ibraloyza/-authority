@@ -19,7 +19,7 @@ include('../dbcon.php');
       <th>user_id</th>
       <th>userName</th>
       <th>Email</th>
-      <th>password</th>
+      <th>phone</th>
       <th>Restore</th>
       <th>Perm Delete</th>
     </tr>
@@ -27,7 +27,7 @@ include('../dbcon.php');
   <tbody>
     <?php
         // Fetch only students who have been soft-deleted (is_deleted = 1)
-        $query = "SELECT * FROM `users` WHERE `is_deleted` = 1";
+        $query = "SELECT * FROM `students` WHERE `is_deleted` = 1";
         $result = mysqli_query($conn, $query);
 
         if(!$result){
@@ -36,17 +36,17 @@ include('../dbcon.php');
             while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tr>
-                    <td><?php echo $row['user_id'];?></td>
-                    <td><?php echo $row['user_name'];?></td>
+                    <td><?php echo $row['student_id'];?></td>
+                    <td><?php echo $row['name'];?></td>
                     <td><?php echo $row['email'];?></td>
-                    <td><?php echo $row['password'];?></td>
+                    <td><?php echo $row['phone'];?></td>
                     <td>
                         <!-- Restore Button -->
-                        <a href="restore.php?user_id=<?php echo $row['user_id'];?>" class="btn btn-warning">Restore</a>
+                        <a href="restore.php?student_id=<?php echo $row['student_id'];?>" class="btn btn-warning">Restore</a>
                     </td>
                     <td>
                         <!-- Permanently Delete Button -->
-                        <a href="delete_permanent.php?user_id=<?php echo $row['user_id'];?>" 
+                        <a href="./delete_permanent.php?student_id=<?php echo $row['student_id'];?>" 
                            class="btn btn-danger" 
                            onclick="return confirm('Are you sure you want to permanently delete this student? This action cannot be undone.');">
                            Perm Delete
