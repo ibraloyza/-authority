@@ -1,4 +1,6 @@
 <?php 
+
+include './Admin/security.php';
 include './dbcon.php';
 
 // include ('./authentication.php'); 

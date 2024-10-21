@@ -3,32 +3,6 @@
 include("security.php");
 
 
-use PHPMailer\PHPMailer\PHPMailer; 
-use PHPMailer\PHPMailer\Exception; 
-require '../vendor/autoload.php';
-
-function sendemail_verify($userName, $Email, $verify_token) {
-    $mail = new PHPMailer(true); 
-    $mail->isSMTP(); 
-    $mail->Host = 'smtp.gmail.com'; 
-    $mail->SMTPAuth = true; 
-    $mail->Username = 'ibraahim3523@gmail.com'; 
-    $mail->Password = 'fxkksgazxmaujeug'; 
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
-    $mail->Port = 587; 
-
-    $mail->setFrom('ibraahim3523@gmail.com', $userName); 
-    $mail->addAddress($Email); 
-    $mail->isHTML(true); 
-    $mail->Subject = 'Email verification from WEB OF IT'; 
-    $mail->Body = "
-        <h2>You have Registered with WEB OF IT</h2>
-        <h5>Verify your email address to login with the below given link</h5>
-        <br /><br />
-        <a href='http://localhost/user/Admin//verify-email.php?token=$verify_token'>Click Me</a>
-    "; 
-    $mail->send(); 
-}
 
 if(isset($_POST['register_btn']))
 {
@@ -86,8 +60,7 @@ if(isset($_POST['register_btn']))
     $result_query = mysqli_query($conn, $query);
 
     if ($result_query) {
-    sendemail_verify($userName, $Email, $verify_token);
-    // $_SESSION['status'] = "Registration Successful! Please verify your Email Address.";
+    $_SESSION['status'] = "Registration Successful! Please verify your Email Address.";
     header("Location: register.php");
     exit();
     } else {

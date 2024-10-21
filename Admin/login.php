@@ -25,7 +25,7 @@ include('includes/header.php');
 
                                 if(isset($_SESSION['status']) && $_SESSION['status'] !='') 
                                 {
-                                    echo '<h2 class="bg-danger text-white"> '.$_SESSION['status'].' </h2>';
+                                    echo '<h2 class="alert alert-success"> '.$_SESSION['status'].' </h2>';
                                     unset($_SESSION['status']);
                                 }
                                 ?>
@@ -37,11 +37,22 @@ include('includes/header.php');
                                 <div class="form-group">
                                     <input type="password"  name="password"class="form-control form-control-user" placeholder="Password">
                                 </div>
+                               
                                 <button type="submit" name="login_btn" class="btn btn-primary btn-user btn-block">Login</button>
-                              
+                     
 
                             </form>
                             <hr>
+                            <h5>
+                               <p>if you lose your password?
+                                <a href="../pages/password-reset.php" class="float-end">Forgot Password?</a>
+                                </p> 
+                            </h5>
+                            <hr>
+                            <h5>
+                                Did not receive your Verification Email?
+                                <a href="../pages/resend-email-verification.php">Resend</a>
+                            </h5>
 
                         </div>
                     </div>

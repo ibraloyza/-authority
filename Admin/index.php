@@ -29,20 +29,21 @@ include('includes/navbar.php');
               <div class="h5 mb-0 font-weight-bold text-gray-800">
 
               <h4>
-
-                <?php 
-
+                  <?php 
+                      // Assuming session is already started and $conn is your database connection
                       $userType = $_SESSION['usertype'];
-                   
-                      $query = "SELECT student_id FROM students WHERE role_id = '$userType' ORDER BY role_id";
+
+                      // Corrected SQL query and output
+                      $query = "SELECT id FROM Admin WHERE role_id = '$userType'";
                       $query_run = mysqli_query($conn, $query);
 
-                      $row = mysqli_num_rows($query_run);
-                      echo '<h1?> totle Users:' . $row. '</h1?';  
-                    
- 
-
-                ?>                                                    
+                      if ($query_run) {
+                          $row_count = mysqli_num_rows($query_run);  // Fetch the number of rows
+                          echo '<h4>Total Users: ' . $row_count . '</h4>';  // Correct echo for the h1 tag
+                      } else {
+                          echo 'Error executing query: ' . mysqli_error($conn);
+                      }
+                  ?>
               </h4>
 
               </div>

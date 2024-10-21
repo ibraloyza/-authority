@@ -1,4 +1,5 @@
 <?php
+
 include '../dbcon.php';
 if (isset($_GET['student_id'])) {
     $id = $_GET['student_id'];

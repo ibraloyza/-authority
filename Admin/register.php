@@ -1,5 +1,7 @@
 <?php 
-session_start();
+// session_start();
+include('security.php');
+
 include('includes/header.php');
 include('includes/navbar.php');
 include('../dbcon.php');
@@ -57,7 +59,7 @@ include('../dbcon.php');
                 <input type="password" name="confirmPassword" class="form-control">
             </div>
             <div class="form-group">
-                <select class="form-control" name="role" required>
+                <select class="form-control" name="role" >
                     <?php 
                         if (mysqli_num_rows($query_run)>0) {
                             while($row = mysqli_fetch_assoc($query_run))

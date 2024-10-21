@@ -1,6 +1,6 @@
 <?php 
 
-session_start(); 
+include '../Admin/security.php';
 
 $page_title = "Paasword Change"; 
 include('../includes/header.php'); 

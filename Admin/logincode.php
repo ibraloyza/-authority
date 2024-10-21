@@ -42,6 +42,8 @@ if (isset($_POST['login_btn'])) {
         $row = mysqli_fetch_assoc($login_query_admin_run);
         $hashed_password = $row['password']; // Fetch the hashed password from the database
         $usertype = $row['role_name']; // Fetch the role_name from the roles table
+
+        
         
         // Verify the password entered by the user against the hashed password in the database
         if (password_verify($password, $hashed_password)) {
