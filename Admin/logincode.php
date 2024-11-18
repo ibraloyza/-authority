@@ -55,18 +55,6 @@ if (isset($_POST['login_btn'])) {
                     header('Location: index.php');  // Redirect Admin to dashboard
                     break;
                     
-                case 'Student':
-                    $_SESSION['username'] = $email;
-                    $_SESSION['usertype'] = $usertype;
-                    header('Location: index.php');  // Redirect Teacher to teacher dashboard
-                    break;
-                
-                case 'Teacher':
-                    $_SESSION['username'] = $email;
-                    $_SESSION['usertype'] = $usertype;
-                    header('Location: index.php');  // Redirect Student to student dashboard
-                    break;
-                    
                 default:
                     $_SESSION['status'] = "Invalid email / password";
                     header('Location: login.php');
@@ -89,19 +77,7 @@ if (isset($_POST['login_btn'])) {
         // Verify the password entered by the user against the hashed password in the database
         if (password_verify($password, $hashed_password)) {
             // Password is correct, proceed to login
-            switch ($usertype) {
-                case 'Admin':
-                    $_SESSION['username'] = $email;
-                    $_SESSION['usertype'] = $usertype;
-                    header('Location: index.php');  // Redirect Admin to dashboard
-                    break;
-                    
-                case 'Student':
-                    $_SESSION['username'] = $email;
-                    $_SESSION['usertype'] = $usertype;
-                    header('Location: index.php');  // Redirect Teacher to teacher dashboard
-                    break;
-                
+            switch ($usertype) {                
                 case 'Teacher':
                     $_SESSION['username'] = $email;
                     $_SESSION['usertype'] = $usertype;
@@ -132,23 +108,14 @@ if (isset($_POST['login_btn'])) {
             // Password is correct, proceed to login
             switch ($usertype) {
                 case 'Admin':
-                    $_SESSION['username'] = $email;
-                    $_SESSION['usertype'] = $usertype;
-                    header('Location: index.php');  // Redirect Admin to dashboard
-                    break;
+       
                     
                 case 'Student':
                     $_SESSION['username'] = $email;
                     $_SESSION['usertype'] = $usertype;
                     header('Location: index.php');  // Redirect Teacher to teacher dashboard
                     break;
-                
-                case 'Teacher':
-                    $_SESSION['username'] = $email;
-                    $_SESSION['usertype'] = $usertype;
-                    header('Location: index.php');  // Redirect Student to student dashboard
-                    break;
-                    
+            
                 default:
                     $_SESSION['status'] = "Invalid email / password";
                     header('Location: login.php');

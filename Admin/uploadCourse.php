@@ -1,11 +1,12 @@
 <?php 
+// session_start();
+include('security.php');
+$page_title = "Courses"; 
+include('includes/header.php');
+include('includes/navbar.php');
+include('../dbcon.php');
 
-include './Admin/security.php';
-include './dbcon.php';
 
-// include ('./authentication.php'); 
-include('./includes/header.php');
-include('./includes/navbar.php');
 
 // // Debug: Check the content of the $_POST array
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,7 +19,7 @@ if(isset($_POST['submit'])){
     $course_Name = mysqli_real_escape_string($conn, $_POST['course_name']); // Escape input
     $file_Name = $_FILES['image']['name'];
     $tempName = $_FILES['image']['tmp_name'];
-    $folder = 'images/' . $file_Name;
+    $folder = '../images/' . $file_Name;
     
     // Check if the teacher_id is set in the POST request
     if (isset($_POST['teacher_id'])) {
@@ -32,8 +33,8 @@ if(isset($_POST['submit'])){
     // Check if teacher_id is valid and not empty
     if(!empty($teacher_id)) {
         // Insert course into the database
-        $query = "INSERT INTO courses(course_name, course_image, teacher_id, description) 
-                  VALUES ('$course_Name', '$file_Name', '$teacher_id', '$desc_course')";
+        $query = "INSERT INTO courses(course_name, course_image, teacher_id) 
+                  VALUES ('$course_Name', '$file_Name', '$teacher_id')";
                   
         $result_query = mysqli_query($conn, $query);
 
@@ -41,7 +42,8 @@ if(isset($_POST['submit'])){
         if($result_query){
             // Move uploaded file
             if(move_uploaded_file($tempName, $folder)){
-                header('location:./Veiw_courses.php?course_msg= this course  uploaded successfully');
+
+                header('location:./Veiw_courses.php');
                
             } else {
                 echo "<h2>File upload failed</h2>"; 
@@ -93,5 +95,7 @@ if(isset($_POST['submit'])){
     </div>
 
 </div>
-
-<?php include ('./includes/footer.php'); ?>
+<?php 
+include('includes/script.php');
+include('includes/footer.php');
+?>

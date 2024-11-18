@@ -35,10 +35,6 @@ include('../dbcon.php');
         <div class="modal-body">
 
             <div class="form-group">
-                    <label for="f_name">id</label>
-                    <input type="text" name="id" class="form-control">
-            </div>
-            <div class="form-group">
                     <label for="f_name">userName</label>
                     <input type="text" name="username" class="form-control">
             </div>
@@ -64,8 +60,15 @@ include('../dbcon.php');
                         if (mysqli_num_rows($query_run)>0) {
                             while($row = mysqli_fetch_assoc($query_run))
                             {
+                                
                                 ?>
-                                <option value=""><?php echo $row['role_name'];?></option>
+                                
+                                <option value="">
+                                    <?php
+                                        if($row['role_name'] !=='Student') 
+                                        echo $row['role_name'];
+                                        ?>
+                                </option>
                                 <?php
                             }
                         }

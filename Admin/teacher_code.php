@@ -3,7 +3,7 @@
 include("security.php");
 
 if ($_POST['teacher_reg_btn']) {
-    $id = $_POST['id'];
+  
     $userName = $_POST['username'];
     $Email= $_POST['email'];
     $phone = $_POST['phone'];
@@ -14,23 +14,23 @@ if ($_POST['teacher_reg_btn']) {
 
 
 
-    if (empty($id) || empty($userName) || empty($Email) || empty($phone) || empty($password) || empty($confirmPassword)) {
+    if ( empty($userName) || empty($Email) || empty($phone) || empty($password) || empty($confirmPassword)) {
         $_SESSION['status'] = "All fields are required";
-        header("Location: register.php");
+        header("Location: register_teacher.php");
         exit();
     }
 
     if ($password !== $confirmPassword) {
         $_SESSION['status'] = "Passwords do not match";
-        header("Location: register.php");
+        header("Location: register_teacher.php");
         exit();
     }
 
-    $check_email_query = "SELECT email FROM admin WHERE email = '$Email'";
+    $check_email_query = "SELECT email FROM  teachers WHERE email = '$Email'";
     $result_check_email = mysqli_query($conn, $check_email_query);
     if (mysqli_num_rows($result_check_email) > 0) {
         $_SESSION['status'] = "Email address already exists";
-        header("Location: register.php");
+        header("Location: register_teacher.php");
         exit();
     }
 
@@ -43,17 +43,17 @@ if ($_POST['teacher_reg_btn']) {
     // Hash the password before saving it
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO teachers (teacher_id, teacher_name, email, phone ,password, verify_token, role_id) 
-    VALUES ('$id','$userName', '$Email', '$phone', '$hashed_password', '$verify_token', '$role_id')";
+    $query = "INSERT INTO teachers ( teacher_name, email, phone ,password, verify_token, role_id) 
+    VALUES ('$userName', '$Email', '$phone', '$hashed_password', '$verify_token', '$role_id')";
     $result_query = mysqli_query($conn, $query);
 
     if ($result_query) {
         $_SESSION['status'] = "Registration Successful! Please verify your Email Address.";
-        header("Location: register.php");
+        header("Location: register_teacher.php");
         exit();
         } else {
         $_SESSION['status'] = "Registration Failed";
-        header("Location: register.php");
+        header("Location: register_teacher.php");
         exit();
         }
     

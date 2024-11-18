@@ -53,35 +53,27 @@ if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
 </li>
 
 
-<?php
+
+
+<!-- <?php
 if(isset($_SESSION['usertype'] ) && ($_SESSION['usertype'] =='Admin')|| ($_SESSION['usertype'] =='Teacher') )
 {
   ?>
-
-
   <li class="nav-item">
-  <a class="nav-link" href="../course.php">
+  <a class="nav-link" href="./uploadCourse.php">
     <i class="fas fa-fw fa-chart-area"></i>
-    <span>Courses</span></a>
+    <span>Upload Courses</span></a>
 </li>
-
-
-
 <?php
 }
-?>
-<?php
-if(isset($_SESSION['usertype']) && ($_SESSION['usertype'] =='Teacher')|| ($_SESSION['usertype'] =='Admin'))
-{
-  ?>
+?> -->
+
 <li class="nav-item">
-  <a class="nav-link" href="../Veiw_courses.php">
+  <a class="nav-link" href="./Veiw_courses.php">
     <i class="fas fa-fw fa-chart-area"></i>
     <span> VeiweCourses</span></a>
 </li>
-<?php
-}
-    ?>
+
 
 
 <?php 
@@ -109,12 +101,11 @@ if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin'){
 }
 ?>
 
-<?php
-if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
-{
 
-}
-?>
+
+
+
+
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
@@ -141,6 +132,12 @@ if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
   Addons
 </div>
 
+
+<?php
+if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
+{
+  ?>
+
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -162,6 +159,13 @@ if(isset($_SESSION['usertype']) && $_SESSION['usertype'] =='Admin')
     </div>
   </div>
 </li>
+<?php
+}
+?>
+
+
+
+
 
 <!-- Nav Item - Charts -->
 <li class="nav-item">

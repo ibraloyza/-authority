@@ -1,9 +1,14 @@
 <?php 
+// session_start();
+include('security.php');
 $page_title = "Courses"; 
-include(__DIR__ . '/includes/header.php'); 
-include './dbcon.php';
+include('includes/header.php');
+include('includes/navbar.php');
+include('../dbcon.php');
+
 
 ?>
+
 
 <div class="container mt-5">
     <h2 class="text-center mb-4"><?php echo $page_title; ?></h2>
@@ -26,7 +31,7 @@ include './dbcon.php';
         ?>
         <div class="col-md-4 mb-4">
             <div class="card h-100">
-                <a href="./enrollment.php"><img src="images/<?php echo htmlspecialchars($row['course_image']); ?>" class="card-img-top img-fluid" alt="Course Image">
+                <a href="./enrollment.php"><img src="../images/<?php echo htmlspecialchars($row['course_image']); ?>" class="card-img-top img-fluid" alt="Course Image">
                 </a>
  
                 <div class="card-body">
@@ -45,4 +50,7 @@ include './dbcon.php';
     </div>
 </div>
 
-<?php include(__DIR__ . '/includes/footer.php'); ?>
+<?php 
+include('includes/script.php');
+include('includes/footer.php');
+?>
